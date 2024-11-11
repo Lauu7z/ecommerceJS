@@ -124,15 +124,14 @@ footer {
 /* CONTACTO */
 
 main {
-  width: 75%;
-  margin-top: 5rem;
+  width: 80%;
 }
 
 .contact-main {
   display: flex;
-  padding: 20px;
+  width: 80%;
   justify-content: center;
-  align-items: center;
+  margin-top: 25px;
 }
 
 .contact-main span {
@@ -141,12 +140,10 @@ main {
 
 .contact-left {
   display: flex;
-  text-align: left;
-  /* justify-content: center; */
   flex-direction: column;
-  width: 50%;
+  font-size: 25px;
+  width: 100%;
   gap: 10px;
-  font-size: 20px;
 }
 
 .formulario {
@@ -160,6 +157,8 @@ main {
 .formulario input {
   width: 100%;
   padding: 10px;
+  border-radius: 10px;
+  border: 0;
 }
 
 .btn {
@@ -169,6 +168,10 @@ main {
 
 .btn button {
   padding: 10px 70px;
+  border: 0;
+  color: white;
+  background-color: rgb(162, 162, 162);
+  cursor: pointer;
 }
 
 .error-message {

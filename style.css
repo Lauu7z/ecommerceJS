@@ -45,9 +45,16 @@ header {
 
 .search-bar input {
   border: 1px solid #ccc;
-  border-radius: 20px 0 0 20px;
   outline: none;
   padding: 5px;
+}
+
+.search-bar button {
+  border: none;
+}
+
+.fa-magnifying-glass {
+  font-size: 30px;
 }
 
 .header-right {
@@ -238,20 +245,59 @@ footer {
   width: 100%;
   background-color: rgb(233, 233, 233);
   width: 100%;
-  padding: 10px;
-  justify-content: center;
+  padding: 30px;
 }
 
 .contact {
   display: flex;
+  justify-content: center;
   gap: 50px;
 }
 
 .nav-left {
   display: flex;
   flex-direction: column;
+  font-size: 1.2rem;
+}
+
+.nav-left a {
+  color: black;
+  text-decoration: none;
 }
 
 .fa-square-instagram {
   font-size: 35px;
+}
+
+.mediosPago {
+  flex-wrap: wrap;
+  width: 20%;
+}
+.mediosPago img {
+  width: 50px;
+  margin: 5px;
+}
+
+.contactanos {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-size: 1.2rem;
+}
+
+.f-right {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+}
+.f-right input {
+  padding: 20px;
+}
+
+.f-right button {
+  padding: 20px;
+}
+
+.emaildesc {
+  display: flex;
 }
