@@ -1,4 +1,21 @@
 const contenedorTarjetas = document.getElementById("container-products");
+const iconoCarrito = document.querySelector(".fa-cart-shopping");
+const carrito = document.getElementById("cart");
+const cerrarCarritoBtn = document.getElementById("cerrar-carrito");
+
+iconoCarrito.addEventListener("click", () => {
+  // Alternar la visibilidad del carrito
+  carrito.classList.toggle("oculto");
+
+  // Si el carrito se está mostrando, actualizar los productos
+  if (!carrito.classList.contains("oculto")) {
+    mostrarProductosCarrito();
+  }
+});
+
+cerrarCarritoBtn.addEventListener("click", () => {
+  carrito.classList.add("oculto");
+});
 
 function crearTarjetasProductos(productos) {
   productos.forEach((producto) => {

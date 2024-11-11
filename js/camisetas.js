@@ -19,7 +19,7 @@ const camisetas = [
   },
   {
     id: 4,
-    nombre: "Olimpikus",
+    nombre: "Olympikus",
     img: "./img/productos/4.jpg",
     precio: 44444,
   },
