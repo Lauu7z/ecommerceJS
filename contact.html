@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ecommerce JS</title>
+    <link rel="stylesheet" href="./contact.css" />
+    <script
+      src="https://kit.fontawesome.com/9bd75894be.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <div class="info">
+        <p>Abona en efectivo o transferencia y aprovecha de 15%OFF!</p>
+      </div>
+      <div class="header-main">
+        <div class="search-bar">
+          <input type="text" placeholder="Buscar" />
+          <button><img src="" alt="Buscar" /></button>
+        </div>
+
+        <a href=""
+          ><img src="./img/Club Atletico Rosario Central.png" alt=""
+        /></a>
+
+        <div class="header-right">
+          <a href="#">CREAR CUENTA</a>
+          <a href="#">INICIAR SESION</a>
+        </div>
+      </div>
+      <nav>
+        <a href="./index.html">INICIO</a>
+        <a href="">PRODUCTOS</a>
+        <a href="./contact.html">CONTACTO</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="contact-main">
+        <div class="contact-left">
+          <p>Inicio/<span>Contacto</span></p>
+          <p>3413200859</p>
+          <p>laureanojuarez69@gmail.com</p>
+          <p>dr cue 876</p>
+        </div>
+
+        <form class="formulario" id="form-contacto" action="">
+          <label for="name">NOMBRE</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            required
+            placeholder="Ingresa tu nombre"
+          />
+          <span id="error-name" class="error-message"></span>
+
+          <label for="email">EMAIL</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            required
+            placeholder="Ingresa tu correo electrónico"
+          />
+          <span id="error-email" class="error-message"></span>
+
+          <label for="tel">TELEFONO</label>
+          <input
+            type="tel"
+            name="tel"
+            id="tel"
+            required
+            placeholder="Ingresa tu número de teléfono"
+          />
+          <span id="error-tel" class="error-message"></span>
+
+          <div class="btn">
+            <button type="submit">ENVIAR</button>
+          </div>
+        </form>
+        <div id="mensaje-exito" class="success-message" style="display: none">
+          <p>¡Mensaje enviado con éxito!</p>
+        </div>
+      </div>
+    </main>
+
+    <script src="./js/contact.js"></script>
+  </body>
+</html>

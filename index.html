@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ecommerce JS</title>
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/style.css" />
     <script
       src="https://kit.fontawesome.com/9bd75894be.js"
       crossorigin="anonymous"
@@ -40,18 +40,69 @@
         </div>
       </div>
       <nav>
-        <a href="">INICIO</a>
+        <a href="./index.html">INICIO</a>
         <a href="">PRODUCTOS</a>
-        <a href="">CONTACTO</a>
+        <a href="./contact.html">CONTACTO</a>
       </nav>
     </header>
 
     <main>
+      <section class="filter">
+        <h3>Filtrar por Marca</h3>
+        <div class="marcas">
+          <label
+            ><input type="checkbox" class="filtro-marca" value="Nike" />
+            Nike</label
+          ><br />
+          <label
+            ><input type="checkbox" class="filtro-marca" value="Under Armour" />
+            Under Armour</label
+          ><br />
+          <label
+            ><input type="checkbox" class="filtro-marca" value="Puma" />
+            Puma</label
+          ><br />
+          <label
+            ><input type="checkbox" class="filtro-marca" value="Olympikus" />
+            Olympikus</label
+          ><br />
+          <label
+            ><input type="checkbox" class="filtro-marca" value="Umbro" />
+            Umbro</label
+          ><br />
+        </div>
+      </section>
       <div id="container-products"></div>
     </main>
-    <footer></footer>
+    <footer>
+      <section class="contact">
+        <div class="nav-left">
+          <h3>NAVEGACION</h3>
+          <p>Inicio</p>
+          <p>Productos</p>
+          <a href="./contact.html">Contacto</a>
+        </div>
+        <div class="mediosPago">
+          <h3>MEDIOS DE PAGO</h3>
+          <h3>FORMAS DE ENVIO</h3>
+        </div>
+        <div class="contactanos">
+          <h3>CONTACTANOS</h3>
+          <p><i class="fa-solid fa-phone"></i> 3413200859</p>
+          <p><i class="fa-solid fa-at"></i> laureanojuarez69@gmail.com</p>
+          <p><i class="fa-solid fa-location-dot"></i> Dr cue 876</p>
+        </div>
+        <div class="f-left">
+          <h3>REDES SOCIALES</h3>
+          <i class="fa-brands fa-square-instagram"></i>
+          <h3>UNITE Y APROVECHA LOS DESCUENTOS</h3>
+          <input type="email" placeholder="Email" />
+          <button type="submit">enviar</button>
+        </div>
+      </section>
+    </footer>
     <script src="./js/camisetas.js"></script>
-    <script src="./js/main.js"></script>
+    <script src="./js/index.js"></script>
     <script src="./js/cartservice.js"></script>
   </body>
 </html>

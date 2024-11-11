@@ -102,6 +102,19 @@ a img {
 
 /* SECCION PRODUCTOS */
 
+.filter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.marcas {
+  display: flex;
+  gap: 10px;
+}
+
 #container-products {
   padding: 5px;
   display: flex;
@@ -192,6 +205,7 @@ a img {
   width: 100%;
   max-width: 450px;
   border-radius: 4px;
+  aspect-ratio: 1;
 }
 
 .tarjeta-producto h3 {
@@ -215,4 +229,29 @@ a img {
 
 .tarjeta-producto button:hover {
   background-color: #218838;
+}
+
+/* footer */
+
+footer {
+  display: flex;
+  width: 100%;
+  background-color: rgb(233, 233, 233);
+  width: 100%;
+  padding: 10px;
+  justify-content: center;
+}
+
+.contact {
+  display: flex;
+  gap: 50px;
+}
+
+.nav-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.fa-square-instagram {
+  font-size: 35px;
 }
