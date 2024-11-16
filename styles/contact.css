@@ -49,20 +49,28 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 30%;
+  margin: 0px 20rem 0px 0px;
 }
 
 .search-bar input {
   border: 1px solid #ccc;
-  border-radius: 20px 0 0 20px;
   outline: none;
   padding: 5px;
+}
+
+.search-bar button {
+  border: none;
+  background-color: transparent;
+}
+
+.fa-magnifying-glass {
+  font-size: 30px;
 }
 
 .header-right {
   display: flex;
   gap: 5px;
-  justify-content: center;
+  justify-content: flex-end;
   text-decoration: none;
   color: #666;
   font-weight: bold;
