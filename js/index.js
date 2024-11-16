@@ -17,7 +17,7 @@ cerrarCarritoBtn.addEventListener("click", () => {
 });
 
 function crearTarjetasProductos(productos) {
-  productos.forEach((producto) => {
+  const tarjetas = productos.map((producto) => {
     const nuevaCamiseta = document.createElement("div");
     nuevaCamiseta.classList = "tarjeta-producto";
     nuevaCamiseta.innerHTML = `
@@ -26,11 +26,15 @@ function crearTarjetasProductos(productos) {
     <p>${producto.precio}</p>
     <button>Agregar al carrito</button>
     `;
-    contenedorTarjetas.appendChild(nuevaCamiseta);
+
     nuevaCamiseta
       .getElementsByTagName("button")[0]
       .addEventListener("click", () => agregarAlCarrito(producto));
+
+    return nuevaCamiseta;
   });
+
+  tarjetas.forEach((tarjeta) => contenedorTarjetas.appendChild(tarjeta));
 }
 
 crearTarjetasProductos(camisetas);
@@ -56,10 +60,10 @@ function mostrarProductosFiltrados(productos) {
     const nuevaCamiseta = document.createElement("div");
     nuevaCamiseta.classList = "tarjeta-producto";
     nuevaCamiseta.innerHTML = `
-      <img src=./img/productos/${producto.id}.jpg>
-      <h3>${producto.nombre}</h3>
-      <p>${producto.precio}</p>
-      <button>Agregar al carrito</button>
+    <img src=./img/productos/${producto.id}.jpg>
+    <h3>${producto.nombre}</h3>
+    <p>${producto.precio}</p>
+    <button>Agregar al carrito</button>
     `;
     contenedorTarjetas.appendChild(nuevaCamiseta);
     nuevaCamiseta
@@ -73,3 +77,23 @@ filtrosMarca.forEach((checkbox) =>
 );
 
 mostrarProductosFiltrados(camisetas);
+
+// MENU HAMBURGUESA
+
+const navbar = document.querySelector(".header-right");
+const abrir = document.querySelector("#abrir");
+const cerrar = document.querySelector("#cerrar");
+
+abrir.addEventListener("click", () => {
+  navbar.classList.add("visible");
+});
+
+cerrar.addEventListener("click", () => {
+  navbar.classList.remove("visible");
+});
+
+console.log("Abrir menú");
+abrir.addEventListener("click", () => {
+  console.log("Menú abierto");
+});
+// ===================================================
