@@ -37,6 +37,8 @@ header {
   align-items: center;
   justify-content: space-between;
   width: 90%;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .menu-hamburguesa {
@@ -47,7 +49,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0px 10rem 0px 0px;
+  margin: 0px 11rem 0px 0px;
 }
 
 .search-bar input {
