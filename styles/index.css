@@ -142,6 +142,7 @@ a img {
   flex-direction: column;
   width: 75%;
   height: 30%;
+  padding: 50px;
   font-size: 30px;
   /* justify-content: center; */
 }
