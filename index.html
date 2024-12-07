@@ -12,38 +12,55 @@
   </head>
   <body>
     <header>
+      <!-- Información promocional -->
       <div class="info">
-        <p>Abona en efectivo o transferencia y aprovecha de 15%OFF!</p>
+        <p>Abona en efectivo o transferencia y aprovecha de 15% OFF!</p>
       </div>
+
+      <!-- Cabecera principal -->
       <div class="header-main">
+        <!-- Botón para abrir menú hamburguesa -->
         <button id="abrir" class="abrir-menu">
           <i class="fa-solid fa-bars"></i>
         </button>
+
+        <!-- Barra de búsqueda -->
         <div class="search-bar">
-          <input id="buscar" type="text" placeholder="Buscar" />
+          <input id="buscar" type="text" placeholder="Buscar productos" />
           <button type="button">
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
         </div>
 
-        <a href=""
-          ><img src="./img/Club Atletico Rosario Central.png" alt=""
-        /></a>
+        <!-- Logo del sitio -->
+        <a href="./index.html" class="logo">
+          <img
+            src="./img/Club Atletico Rosario Central.png"
+            alt="Logo Rosario Central"
+          />
+        </a>
 
+        <!-- Sección derecha del encabezado -->
         <div class="headerSection-right">
-          <div class="header-right">
+          <!-- Menú desplegable -->
+          <div class="header-right" id="menu">
             <button id="cerrar" class="cerrar-menu">
               <i class="fa-solid fa-x"></i>
             </button>
             <ul class="ulList">
-              <li class="login"><a href="#">CREAR CUENTA</a></li>
-              <li class="login"><a href="#">INICIAR SESION</a></li>
+              <li class="login">
+                <a href="./login.html">Crear cuenta / Iniciar sesión</a>
+              </li>
             </ul>
           </div>
-          <a id="icono-carrito" href="#">
+
+          <!-- Icono del carrito -->
+          <a id="icono-carrito" href="#" aria-label="Ver carrito">
             <i class="fa-solid fa-cart-shopping"></i>
             <span id="cuenta-carrito">0</span>
           </a>
+
+          <!-- Detalles del carrito -->
           <div id="cart" class="carrito oculto">
             <h2>Carrito de compras</h2>
             <ul id="lista-carrito"></ul>
@@ -51,10 +68,14 @@
           </div>
         </div>
       </div>
+
+      <!-- Navegación -->
       <nav>
-        <a href="./index.html">INICIO</a>
-        <a href="">PRODUCTOS</a>
-        <a href="./contact.html">CONTACTO</a>
+        <ul>
+          <li><a href="./index.html">Inicio</a></li>
+          <li><a href="#">Productos</a></li>
+          <li><a href="./contact.html">Contacto</a></li>
+        </ul>
       </nav>
     </header>
 

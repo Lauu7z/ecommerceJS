@@ -47,9 +47,8 @@ function eliminarDelCarrito(idProducto) {
   memoria = memoria.filter((producto) => producto.id !== idProducto);
   localStorage.setItem("camisetas", JSON.stringify(memoria));
 
-  actualizarNumeroCarrito(); // Actualiza el número en el ícono del carrito
-  mostrarProductosCarrito(); // Actualiza la lista de productos en el carrito
+  actualizarNumeroCarrito();
+  mostrarProductosCarrito();
 }
 
-// Inicializa la cantidad del carrito al cargar la página
 actualizarNumeroCarrito();

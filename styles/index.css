@@ -4,21 +4,18 @@
   box-sizing: border-box;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  /* border: 1px solid red; */
   list-style: none;
   text-decoration: none;
 }
 
 body {
   display: flex;
-  height: 100vh;
-  width: 100%;
-  align-items: center;
   flex-direction: column;
-  gap: 5px;
+  gap: 10px;
   background-color: rgb(255, 249, 241);
 }
 
+/* Header */
 header {
   display: flex;
   flex-direction: column;
@@ -30,6 +27,8 @@ header {
   border-bottom: 1px solid grey;
   font-weight: 300;
   padding: 5px;
+  width: 100%;
+  text-align: center;
 }
 
 .header-main {
@@ -37,65 +36,130 @@ header {
   align-items: center;
   justify-content: space-between;
   width: 90%;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding: 15px 0;
 }
 
-.menu-hamburguesa {
+.logo img {
+  width: 120px;
+}
+
+/* Menú hamburguesa */
+.abrir-menu,
+.cerrar-menu {
   display: none;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
+.menu-panel {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(160, 160, 160, 0.95);
+  padding: 2rem;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.menu-panel.visible {
+  display: flex;
+}
+
+/* Barra de búsqueda */
 .search-bar {
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin: 0px 11rem 0px 0px;
+  gap: 10px;
 }
 
 .search-bar input {
   border: 1px solid #ccc;
+  padding: 8px;
+  border-radius: 4px;
   outline: none;
-  padding: 5px;
 }
 
 .search-bar button {
   border: none;
-  background-color: transparent;
+  background: none;
+  cursor: pointer;
 }
 
 .fa-magnifying-glass {
-  font-size: 30px;
+  font-size: 1.2rem;
 }
 
+/* Header derecho */
 .headerSection-right {
   display: flex;
-  gap: 50px;
-}
-
-.header-right {
-  display: flex;
-  justify-content: center;
-  text-decoration: none;
-  color: #666;
-  font-weight: bold;
+  align-items: center;
+  gap: 20px;
 }
 
 .header-right ul {
   display: flex;
-  gap: 20px;
+  gap: 15px;
 }
 
 .header-right a {
-  text-decoration: none;
-  color: #000000;
+  color: #000;
   font-weight: bold;
-  font-size: 1rem;
-  width: 30%;
 }
 
 .carrito span {
-  font-size: 20px;
+  background-color: #ff0000;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 50%;
+  padding: 2px 6px;
+  margin-left: 5px;
 }
+
+.carrito {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  width: 300px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+}
+
+.carrito.oculto {
+  display: none;
+}
+
+/* Navegación */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+  background-color: burlywood;
+  padding: 10px;
+}
+
+nav ul {
+  display: flex;
+  gap: 25px;
+}
+
+nav a {
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* HERO */
 
 .navbar-list {
   display: flex;
@@ -133,19 +197,17 @@ a img {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 30vh;
   font-size: 50px;
   color: rgb(48, 48, 115);
-  text-align: justify;
+  padding: 25px;
 }
 
 .aboutus {
   display: flex;
   flex-direction: column;
   width: 75%;
-  height: 30vh;
   font-size: 30px;
-  /* justify-content: center; */
+  padding: 10px;
 }
 .aboutus span {
   font-size: 40px;
@@ -169,6 +231,23 @@ a img {
   gap: 10px;
 }
 
+.container-products {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.tarjeta-producto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.tarjeta-producto img {
+  width: 450px;
+  aspect-ratio: 1;
+}
+
 main {
   display: flex;
   flex-direction: column;
@@ -187,223 +266,71 @@ main {
   justify-content: center;
 }
 
-/* Carrito de compras */
-#cuenta-carrito {
-  background-color: #ff0000;
-  color: white;
-  padding: 2px 6px;
-  border-radius: 50%;
-  font-weight: bold;
-  margin-left: 5px;
-}
-
-.carrito {
-  position: absolute;
-  top: 60px;
-  right: 10px;
-  width: 300px;
-  background-color: white;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  padding: 15px;
-}
-
-.carrito.oculto {
-  display: none;
-}
-
-.carrito h2 {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-#lista-carrito li {
-  display: flex;
-  justify-content: space-between;
-  padding: 5px 0;
-  border-bottom: 1px solid #ddd;
-}
-
-#lista-carrito li button {
-  background-color: #ff5555;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 4px 8px;
-  cursor: pointer;
-}
-
-#lista-carrito li button:hover {
-  background-color: #ff3333;
-}
-
-/* Botón cerrar */
-#cerrar-carrito {
-  background-color: #444;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
-  border-radius: 4px;
-  margin-top: 10px;
-  display: block;
-  width: 100%;
-}
-
-#cerrar-carrito:hover {
-  background-color: #333;
-}
-
-/* Tarjetas de productos */
-.tarjeta-producto {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 10px;
-  text-align: center;
-  margin: 10px;
-}
-
-.tarjeta-producto img {
-  width: 100%;
-  max-width: 450px;
-  border-radius: 4px;
-  aspect-ratio: 1;
-}
-
-.tarjeta-producto h3 {
-  font-size: 16px;
-  margin: 10px 0;
-}
-
-.tarjeta-producto p {
-  font-size: 14px;
-  color: #666;
-}
-
-.tarjeta-producto button {
-  background-color: #28a745;
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.tarjeta-producto button:hover {
-  background-color: #218838;
-}
-
-/* footer */
-
-footer {
-  width: 100%;
-  background-color: burlywood;
-
-  width: 100%;
-  padding: 5px;
-}
+/* CONTACTO */
 
 .contact {
   display: grid;
-  gap: 50px;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-}
-
-.nav-left {
-  display: flex;
-  flex-direction: column;
-  font-size: 1.2rem;
-}
-
-.nav-left a {
-  color: black;
-}
-
-.fa-square-instagram {
-  font-size: 35px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  height: 30vh;
 }
 
 .mediosPago img {
-  width: 50px;
-  margin: 5px;
+  width: 70px;
 }
 
-.contactanos {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  font-size: 1.2rem;
-}
-.f-right input {
-  padding: 20px;
-}
-
-.f-right button {
-  padding: 20px;
-}
-
-.emaildesc {
-  display: flex;
-}
-
-/* Menu hamburguesa */
-.abrir-menu,
-.cerrar-menu {
-  display: none;
-  border: 0;
-  font-size: 1.5rem;
-  background-color: transparent;
-  cursor: pointer;
-}
-
+/* Responsividad */
 @media (max-width: 900px) {
-  .aboutus,
   .hero {
-    display: none;
+    font-size: 35px;
+    text-align: center;
   }
 
-  .abrir-menu,
-  .cerrar-menu {
+  .aboutus {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .abrir-menu {
     display: block;
-  }
-
-  .header-right {
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    background-color: rgb(160, 160, 160);
-    padding: 3rem;
-    box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5);
-    flex-direction: column;
-  }
-
-  .header-right.visible {
-    display: block;
-    flex-direction: column;
   }
 
   .search-bar {
     display: none;
-  }
-
-  .nav-left,
-  .mediosPago,
-  .contactanos,
-  .f-right {
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-  .emaildesc {
-    display: flex;
-    justify-content: center;
-  }
-
-  .ulList {
-    display: flex;
+    width: 100%;
     flex-direction: column;
+    gap: 10px;
+  }
+
+  .search-bar.visible {
+    display: flex;
+  }
+
+  .header-main {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .headerSection-right {
+    gap: 10px;
+  }
+
+  nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .menu-panel {
+    width: 100%;
+    height: 100vh;
+    justify-content: flex-start;
+    padding-top: 2rem;
+  }
+
+  .header-right ul {
+    flex-direction: column;
+    gap: 10px;
   }
 }

@@ -80,20 +80,17 @@ mostrarProductosFiltrados(camisetas);
 
 // MENU HAMBURGUESA
 
-const navbar = document.querySelector(".header-right");
+const menuPanels = document.querySelectorAll(".menu-panel");
 const abrir = document.querySelector("#abrir");
 const cerrar = document.querySelector("#cerrar");
 
+// Abrir ambos paneles
 abrir.addEventListener("click", () => {
-  navbar.classList.add("visible");
+  menuPanels.forEach((panel) => panel.classList.add("visible"));
 });
 
+// Cerrar ambos paneles
 cerrar.addEventListener("click", () => {
-  navbar.classList.remove("visible");
-});
-
-console.log("Abrir menú");
-abrir.addEventListener("click", () => {
-  console.log("Menú abierto");
+  menuPanels.forEach((panel) => panel.classList.remove("visible"));
 });
 // ===================================================
