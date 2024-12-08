@@ -4,333 +4,210 @@
   box-sizing: border-box;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  list-style: none;
-  text-decoration: none;
+  ul a {
+    list-style: none;
+    text-decoration: none;
+    color: black;
+  }
 }
 
 body {
   display: flex;
   flex-direction: column;
-  gap: 10px;
   background-color: rgb(255, 249, 241);
 }
 
 /* Header */
 header {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 50px;
   align-items: center;
-  width: 100%;
 }
 
-.info {
+.header-info {
   border-bottom: 1px solid grey;
+  color: white;
+  background-color: #000;
   font-weight: 300;
   padding: 5px;
   width: 100%;
   text-align: center;
 }
 
-.header-main {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 90%;
-  padding: 15px 0;
-}
-
 .logo img {
-  width: 120px;
+  width: 50px;
 }
 
-/* Menú hamburguesa */
-.abrir-menu,
-.cerrar-menu {
-  display: none;
-  background: transparent;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-.menu-panel {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: rgba(160, 160, 160, 0.95);
-  padding: 2rem;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.menu-panel.visible {
-  display: flex;
-}
-
-/* Barra de búsqueda */
-.search-bar {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.search-bar input {
-  border: 1px solid #ccc;
-  padding: 8px;
-  border-radius: 4px;
-  outline: none;
-}
-
-.search-bar button {
-  border: none;
-  background: none;
-  cursor: pointer;
-}
-
-.fa-magnifying-glass {
-  font-size: 1.2rem;
-}
-
-/* Header derecho */
-.headerSection-right {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.header-right ul {
-  display: flex;
-  gap: 15px;
-}
-
-.header-right a {
-  color: #000;
-  font-weight: bold;
-}
-
-.carrito span {
-  background-color: #ff0000;
-  color: white;
-  font-size: 14px;
-  font-weight: bold;
-  border-radius: 50%;
-  padding: 2px 6px;
-  margin-left: 5px;
-}
-
-.carrito {
-  display: none;
-  position: absolute;
-  top: 60px;
-  right: 10px;
-  width: 300px;
-  background-color: white;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  padding: 15px;
-}
-
-.carrito.oculto {
-  display: none;
-}
-
-/* Navegación */
 nav {
   display: flex;
-  justify-content: center;
-  gap: 15px;
+  gap: 50px;
+}
+
+.ulList {
+  display: flex;
+  gap: 20px;
+  color: red;
+  text-decoration: none;
+  list-style: none;
+}
+
+#hambur {
+  display: none;
+}
+
+#hambur i {
+  font-size: 26px;
+}
+
+#cart i {
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.menu-hambur {
+  display: none;
+}
+
+.menu-hambur button {
+  border: none;
+}
+
+.menu-hambur i {
+  font-size: 25px;
+}
+
+.container-menu-hambur {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   width: 100%;
-  background-color: burlywood;
+  height: 100%;
+  padding: 25px;
+}
+
+.ulListHambur {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+.btnCerrar {
+  display: flex;
+  width: 100%;
+  justify-content: end;
   padding: 10px;
 }
 
-nav ul {
-  display: flex;
-  gap: 25px;
-}
-
-nav a {
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
-}
-
-/* HERO */
-
-.navbar-list {
-  display: flex;
-  gap: 20px;
-}
-
-nav {
-  display: flex;
-  width: 80%;
-  align-items: center;
-  justify-content: center;
-  background-color: burlywood;
-  padding: 5px;
-  gap: 15px;
-}
-
-nav a {
-  color: white;
-  font-size: 20px;
-}
-
-.create-login a {
-  color: black;
-  font-size: 20px;
-}
-
-a img {
-  width: 140px;
-}
+/* ------------------------------------------------------------- */
 
 /* HERO */
 
 .hero {
+  background-color: rgb(166, 203, 255);
+  height: 30vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  font-size: 50px;
-  color: rgb(48, 48, 115);
-  padding: 25px;
 }
 
-.aboutus {
+.hero h2 {
+  font-size: 50px;
+}
+
+.about-us {
   display: flex;
   flex-direction: column;
-  width: 75%;
-  font-size: 30px;
-  padding: 10px;
-}
-.aboutus span {
-  font-size: 40px;
-
-  font-weight: 700;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+  color: white;
+  height: 75px;
 }
 
-/* SECCION PRODUCTOS */
+/* ------------------------------------------------- */
+
+/* FILTER */
+
+.sectionProducts {
+  display: flex;
+  align-items: start;
+}
 
 .filter {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  height: 100%;
+  padding: 25px 10px;
   gap: 5px;
-  padding: 5px;
 }
 
 .marcas {
   display: flex;
-  gap: 10px;
-}
-
-.container-products {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.tarjeta-producto {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  gap: 5px;
 }
 
-.tarjeta-producto img {
-  width: 450px;
-  aspect-ratio: 1;
-}
-
-main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  /* width: 100%; */
-}
+/* PRODUCT CARD */
 
 #container-products {
-  padding: 5px;
-  display: grid;
-  width: 100%;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 4fr));
+  display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 10px 30px;
   justify-content: center;
+  padding: 10px;
 }
 
-/* CONTACTO */
-
-.contact {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-template-rows: 1fr;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-  height: 30vh;
+.product-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  width: 450px;
+  text-align: center;
 }
 
-.mediosPago img {
-  width: 70px;
+.product-card img {
+  width: 100%;
+  border-radius: 4px;
 }
 
-/* Responsividad */
-@media (max-width: 900px) {
-  .hero {
-    font-size: 35px;
-    text-align: center;
-  }
+.product-card button {
+  padding: 5px 30px;
+  background-color: bisque;
+  border: none;
+  cursor: pointer;
+}
 
-  .aboutus {
-    font-size: 20px;
-    text-align: center;
-  }
+/* ------------------------------------------------- */
 
-  .abrir-menu {
-    display: block;
-  }
+/* MEDIAQUERIES */
 
-  .search-bar {
+@media (max-width: 768px) {
+  .ulList {
     display: none;
-    width: 100%;
-    flex-direction: column;
-    gap: 10px;
   }
 
-  .search-bar.visible {
+  .search {
+    display: none;
+  }
+
+  #hambur {
     display: flex;
   }
 
-  .header-main {
-    flex-direction: row;
-    justify-content: space-between;
+  .menu-hambur {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60vi;
+    height: 100%;
+    background-color: white;
   }
 
-  .headerSection-right {
-    gap: 10px;
-  }
-
-  nav {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .menu-panel {
-    width: 100%;
-    height: 100vh;
-    justify-content: flex-start;
-    padding-top: 2rem;
-  }
-
-  .header-right ul {
-    flex-direction: column;
-    gap: 10px;
+  .visible {
+    display: block;
   }
 }
