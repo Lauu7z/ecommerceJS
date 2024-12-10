@@ -44,16 +44,30 @@ checkboxes.forEach((checkbox) =>
 renderProductos(camisetas);
 
 // MENU HAMBURGUESA
-
 const btnHambur = document.getElementById("hambur");
 const menuHambur = document.querySelector(".menu-hambur");
-
-const btnCerrar = document.querySelector(".btnCerrar");
+const btnCerrarMenu = document.querySelector(".btnCerrar-menu");
 
 btnHambur.addEventListener("click", () => {
-  menuHambur.classList.add("visible");
+  document.body.style.overflow = "hidden";
+  menuHambur.classList.add("visibleMenu");
 });
 
-btnCerrar.addEventListener("click", () => {
-  menuHambur.classList.remove("visible");
+btnCerrarMenu.addEventListener("click", () => {
+  document.body.style.overflow = "";
+  menuHambur.classList.remove("visibleMenu");
+});
+
+// CARRITO
+const carrito = document.getElementById("cart");
+const cartMenu = document.querySelector(".cart-menu");
+const btnCerrarCart = document.querySelector(".btnCerrar-cart");
+
+carrito.addEventListener("click", () => {
+  cartMenu.classList.add("visibleCart");
+});
+
+btnCerrarCart.addEventListener("click", () => {
+  cartMenu.classList.remove("visibleCart");
+  console.log(cartMenu.classList);
 });
