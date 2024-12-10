@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ecommerce JS</title>
+    <title>Document</title>
     <link rel="stylesheet" href="./styles/index.css" />
     <script src="https://kit.fontawesome.com/9bd75894be.js"></script>
   </head>
@@ -36,12 +36,18 @@
           </div>
           <!-- CART MENU -->
           <div class="cart-menu">
-            <button class="btnCerrar-cart">
-              <i class="fa-solid fa-xmark"></i>
-            </button>
+            <div class="section-cartMenu">
+              <button class="btnCerrar-cart">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+              <!-- CONTAINER CART MENU -->
+              <div id="container-cart-menu">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <div class="container-products-cart"></div>
+                <p id="total"></p>
+              </div>
+            </div>
           </div>
-          <!-- CONTAINER CART MENU -->
-          <div class="container-cart-menu"></div>
           <!-- HAMBUR MENU -->
           <div class="menu-hambur">
             <button class="btnCerrar-menu">
@@ -120,58 +126,52 @@
         <div id="container-products"></div>
       </section>
     </main>
-    <!-- <footer>
-      <section class="contact">
-        <div class="nav-left">
-          <h3>NAVEGACION</h3>
+
+    <footer>
+      <div class="sectionFooter-top">
+        <div class="footer-info">
+          <h3>Categorias</h3>
           <p>Inicio</p>
           <p>Productos</p>
-          <a href="./contact.html">Contacto</a>
+          <p>Contacto</p>
         </div>
-        <div class="mediosPago">
-          <h3>MEDIOS DE PAGO</h3>
-          <img src="./img/mediosdepago/americanexpress.png" alt="" /><img
-            src="./img/mediosdepago/argencard.png"
-            alt=""
-          /><img src="./img/mediosdepago/banelco.png" alt="" /><img
-            src="./img/mediosdepago/cabal.png"
-            alt=""
-          /><img src="./img/mediosdepago/cabaldebito.png" alt="" /><img
-            src="./img/mediosdepago/cencosud.png"
-            alt=""
-          /><img src="./img/mediosdepago/falabella.png" alt="" /><img
-            src="./img/mediosdepago/link.png"
-            alt=""
-          /><img src="./img/mediosdepago/mastercard.png" alt="" /><img
-            src="./img/mediosdepago/mastercard.png"
-            alt=""
-          /><img src="./img/mediosdepago/provincianet.png" alt="" /><img
-            src="./img/mediosdepago/tarjetanaranja.png"
-            alt=""
-          /><img src="./img/mediosdepago/tarjetashopping.png" alt="" /><img
-            src="./img/mediosdepago/visa.png"
-            alt=""
-          />
-          <h3>FORMAS DE ENVIO</h3>
-          <img src="./img/mediosdepago/form-envio.png" alt="" />
+        <div class="footer-info">
+          <h3>Contactanos</h3>
+          <p>+54 3413200859</p>
+          <p>laureanojuarez69@gmail.com</p>
+          <p>Dr. Cue 876 Bis</p>
         </div>
-        <div class="contactanos">
-          <h3>CONTACTANOS</h3>
-          <p><i class="fa-solid fa-phone"></i> 3413200859</p>
-          <p><i class="fa-solid fa-at"></i> laureanojuarez69@gmail.com</p>
-          <p><i class="fa-solid fa-location-dot"></i> Dr cue 876</p>
+        <div class="footer-info">
+          <h3>Categorias</h3>
+          <p>Inicio</p>
+          <p>Productos</p>
+          <p>Contacto</p>
         </div>
-        <div class="f-right">
-          <h3>REDES SOCIALES</h3>
-          <i class="fa-brands fa-square-instagram"></i>
-          <h3>UNITE Y APROVECHA LOS DESCUENTOS</h3>
-          <div class="emaildesc">
-            <input type="email" placeholder="Email" />
-            <button type="submit">Enviar</button>
+      </div>
+      <div>
+        <hr />
+      </div>
+
+      <div class="footer-info-bottom">
+        <div class="mediospagos">
+          <span>Medios de pago </span>
+          <div class="footer-imagenes">
+            <img src="./img/mediosdepago/americanexpress.png" alt="" />
+            <img src="./img/mediosdepago/argencard.png" alt="" />
+            <img src="./img/mediosdepago/banelco.png" alt="" />
+            <img src="./img/mediosdepago/mastercard.png" alt="" />
+            <img src="./img/mediosdepago/visa.png" alt="" />
+            <img src="./img/mediosdepago/tarjetashopping.png" alt="" />
+            <img src="./img/mediosdepago/tarjetanaranja.png" alt="" />
+            <img src="./img/mediosdepago/cencosud.png" alt="" />
           </div>
         </div>
-      </section>
-    </footer> -->
+        <div class="mediosenvio">
+          <span>Medios de envio</span>
+          <img src="./img/mediosdepago/form-envio.png" alt="" />
+        </div>
+      </div>
+    </footer>
     <script src="./js/camisetas.js"></script>
     <script src="./js/main.js"></script>
   </body>
