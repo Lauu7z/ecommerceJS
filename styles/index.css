@@ -78,15 +78,14 @@ nav {
   align-items: center;
   justify-content: center;
   gap: 35px;
-}
-#total {
-  border: 1px solid black;
-  padding: 5px;
+  width: 100%;
 }
 
-.container-products-cart img {
-  width: 75px;
-  aspect-ratio: 1;
+.products-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
 }
 
 .cart-item {
@@ -97,6 +96,10 @@ nav {
   gap: 10px;
   text-align: center;
   padding: 10px;
+}
+
+.cart-item img {
+  width: 50px;
 }
 
 .cart-item button {
@@ -136,15 +139,15 @@ nav {
 }
 /* MENU HAMBURGUESA */
 
-.menu-hambur {
+.open-menu {
   display: none;
 }
 
-.menu-hambur button {
+.open-menu button {
   border: none;
 }
 
-.menu-hambur i {
+.open-menu i {
   font-size: 25px;
 }
 
@@ -313,7 +316,7 @@ footer {
     cursor: pointer;
   }
 
-  .menu-hambur {
+  .open-menu {
     display: none;
     position: fixed;
     top: 54px;
