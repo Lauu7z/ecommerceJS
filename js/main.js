@@ -1,8 +1,7 @@
-// Elementos del DOM
 const container = document.getElementById("container-products");
 const checkboxes = document.querySelectorAll(".filtro-marca");
 
-// Función para renderizar productos
+// Funcion para renderizar productos
 const renderProductos = (productos) => {
   container.innerHTML = productos
     .map(
@@ -44,34 +43,46 @@ checkboxes.forEach((checkbox) =>
 // Renderizar todos los productos al cargar la página
 renderProductos(camisetas);
 
-// MENU HAMBURGUESA
+// -------------------------MENU HAMBURGUESA ---------------------//
 const btnHambur = document.getElementById("hambur");
-const menuHambur = document.querySelector(".menu-hambur");
-const btnCerrarMenu = document.querySelector(".btnCerrar-menu");
+const hamburMenu = document.querySelector(".menu-hambur");
 
-btnHambur.addEventListener("click", () => {
-  document.body.style.overflow = "hidden";
-  menuHambur.classList.add("visibleMenu");
-});
+// MOSTRAR MENU HAMBUR
 
-btnCerrarMenu.addEventListener("click", () => {
-  document.body.style.overflow = "";
-  menuHambur.classList.remove("visibleMenu");
-});
+const toogleMenu = () => {
+  hamburMenu.classList.toggle("visibleMenu");
 
-// CARRITO
+  if (cartMenu.classList.contains("visibleCart")) {
+    cartMenu.classList.remove("visibleCart");
+    return;
+  }
+
+  if (hamburMenu.classList.contains("visibleMenu")) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "";
+  }
+};
+btnHambur.addEventListener("click", toogleMenu);
+
+// ------------------------- CARRITO --------------------------------//
 const carritoIcon = document.getElementById("cart");
 const cartMenu = document.querySelector(".cart-menu");
-const btnCerrarCart = document.querySelector(".btnCerrar-cart");
 
-carritoIcon.addEventListener("click", () => {
-  cartMenu.classList.add("visibleCart");
-});
-
-btnCerrarCart.addEventListener("click", () => {
-  cartMenu.classList.remove("visibleCart");
-  console.log(cartMenu.classList);
-});
+// Mostrar el carrito
+const toogleCart = () => {
+  cartMenu.classList.toggle("visibleCart");
+  if (hamburMenu.classList.contains("visibleMenu")) {
+    hamburMenu.classList.remove("visibleMenu");
+    return;
+  }
+  if (cartMenu.classList.contains("visibleCart")) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "";
+  }
+};
+carritoIcon.addEventListener("click", toogleCart);
 
 // FUNCIONALIDAD DEL CARRITO
 let carrito = [];

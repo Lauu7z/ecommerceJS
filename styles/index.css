@@ -116,7 +116,7 @@ nav {
 .cart-menu {
   display: none;
   position: fixed;
-  top: 0;
+  top: 54px;
   right: 0;
   height: 100%;
   width: 400px;
@@ -163,19 +163,6 @@ nav {
   gap: 25px;
   text-decoration: none;
   list-style-type: none;
-}
-
-.btnCerrar-menu,
-.btnCerrar-cart {
-  display: flex;
-  width: 100%;
-  justify-content: end;
-  padding: 10px;
-}
-
-.btnCerrar-cart i {
-  font-size: 25px;
-  cursor: pointer;
 }
 
 /* HERO */
@@ -329,7 +316,7 @@ footer {
   .menu-hambur {
     display: none;
     position: fixed;
-    top: 0;
+    top: 54px;
     right: 0;
     width: 60vi;
     height: 100%;
@@ -339,9 +326,5 @@ footer {
 
   .visibleMenu {
     display: block;
-  }
-
-  .btnCerrar-menu i {
-    cursor: pointer;
   }
 }
