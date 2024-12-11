@@ -96,18 +96,20 @@ nav {
   gap: 10px;
   text-align: center;
   padding: 10px;
+  border: 1px solid #ddd;
 }
 
 .cart-item img {
-  width: 50px;
+  border-radius: 10px;
+  width: 65px;
 }
 
-.cart-item button {
-  padding: 10px 20px;
+.cart-item span {
   border: 1px solid black;
   background-color: aliceblue;
   border-radius: 10px;
   cursor: pointer;
+  padding: 5px 10px;
 }
 
 .item-info {
@@ -130,13 +132,33 @@ nav {
   display: block;
 }
 
-.section-cartMenu {
+.cartMenu {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  justify-content: center;
   align-items: center;
+  padding: 15px;
 }
+
+.add-modal {
+  padding: 15px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: green;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  transition: all 0.5s ease-out;
+  transform: translateY(200%);
+}
+
+.active-modal {
+  transform: translateY(0);
+  transition: all 0.5s ease-in;
+}
+
 /* MENU HAMBURGUESA */
 
 .open-menu {
@@ -193,8 +215,6 @@ nav {
   color: white;
   padding: 25pxpp;
 }
-
-/* ------------------------------------------------- */
 
 /* FILTER */
 
@@ -293,10 +313,7 @@ footer {
   width: 50px;
 }
 
-/* ------------------------------------------------- */
-
 /* MEDIAQUERIES */
-
 @media (max-width: 768px) {
   .ulList {
     display: none;

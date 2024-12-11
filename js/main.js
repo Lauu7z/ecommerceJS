@@ -1,8 +1,8 @@
 const container = document.getElementById("container-products");
 
 // Funcion para renderizar productos
-const createProductTemplate = (productos) => {
-  const {id, img, nombre, marca, precio} = productos;
+const createProductCardTemplate = (producto) => {
+  const {id, img, nombre, marca, precio} = producto;
   return `
   <div class="product-card">
     <img src="${img}" alt="${nombre}" class="product-img">
@@ -21,7 +21,7 @@ const createProductTemplate = (productos) => {
 
 const renderProductos = (productos) => {
   container.innerHTML = "";
-  container.innerHTML = productos.map(createProductTemplate).join("");
+  container.innerHTML = productos.map(createProductCardTemplate).join("");
 };
 
 renderProductos(camisetas);
@@ -97,7 +97,7 @@ const saveCart = () => localStorage.setItem("cart", JSON.stringify(cart));
 
 // Logica crear template
 const createCartProductHTML = (cartProduct) => {
-  const {id, img, nombre, precio, marca, cantidad} = cartProduct;
+  const {id, img, nombre, precio, cantidad} = cartProduct;
   return `
   <div class='cart-item'>
   <img src="${img}" alt="${nombre}" class="product-img">
@@ -105,9 +105,15 @@ const createCartProductHTML = (cartProduct) => {
     <p>${nombre}</p>
     <p>$${precio}</p>
     </div>
-    <p>Cantidad: ${cantidad}</p>
+    <span class="cantidad restar" data-id="${id}">-</span>
+    <p>${cantidad}</p>
+    <span class="cantidad sumar" data-id="${id}">+</span>
     </div>
+    <div>
+    
     </div>
+
+    <div/>
     `;
 };
 // Logica renderizar
@@ -120,10 +126,33 @@ renderCart = () => {
 };
 document.addEventListener("DOMContentLoaded", renderCart);
 
+// Traemos del dom el total
+const totalCart = document.getElementById("total-cart");
+
+const getCartTotal = () => {
+  const total = cart.reduce((acc, cur) => acc + cur.precio * cur.cantidad, 0);
+  return total;
+};
+
+const showCartTotal = () => {
+  totalCart.textContent = `$${getCartTotal()}`;
+};
+
 // Funcion que ejecute todo lo necesario para actualizar el carro
 const updateCartState = () => {
   saveCart();
+  showCartTotal();
   renderCart();
+};
+
+const successModal = document.querySelector(".add-modal");
+
+const showSuccessModal = (msg) => {
+  successModal.classList.add("active-modal");
+  successModal.innerHTML = msg;
+  setTimeout(() => {
+    successModal.classList.remove("active-modal");
+  }, 2000);
 };
 
 const addProduct = ({target}) => {
@@ -132,8 +161,10 @@ const addProduct = ({target}) => {
   // Validacion si existe el producto en el carrito
   if (isExistingCartProduct(product)) {
     addUnitProduct(product);
+    showSuccessModal("Se agrego otra unidad al carrito");
   } else {
     cart = [...cart, {...product, cantidad: 1}];
+    showSuccessModal("Producto agregado al carrito");
   }
   updateCartState();
 };
@@ -159,3 +190,45 @@ const isExistingCartProduct = (producto) => {
 };
 
 container.addEventListener("click", addProduct);
+
+// Handle Quantity Sumar
+const handlePlusEvent = (id) => {
+  const existingCartProduct = cart.find((product) => product.id === id);
+  addUnitProduct(existingCartProduct);
+};
+// Handle Cantidad Restar
+const handleMinusBtnEvent = (id) => {
+  const existingCartProduct = cart.find((item) => item.id === id);
+
+  if (existingCartProduct.cantidad === 1) {
+    removeProductFromCart(existingCartProduct);
+    return;
+  }
+  substracUnitProduct(existingCartProduct);
+};
+
+const substracUnitProduct = (existingProduct) => {
+  cart = cart.map((product) => {
+    return product.id === existingProduct.id
+      ? {...product, cantidad: product.cantidad - 1}
+      : product;
+  });
+};
+
+const removeProductFromCart = (existingProduct) => {
+  cart = cart.filter((product) => product.id !== existingProduct.id);
+  updateCartState();
+};
+
+const handleQuantity = (e) => {
+  if (e.target.classList.contains("restar")) {
+    handleMinusBtnEvent(e.target.dataset.id);
+  } else if (e.target.classList.contains("sumar")) {
+    handlePlusEvent(e.target.dataset.id);
+  }
+
+  updateCartState();
+};
+
+productsCart.addEventListener("click", handleQuantity);
+document.addEventListener("DOMContentLoaded", showCartTotal);
