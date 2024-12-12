@@ -90,7 +90,6 @@ carritoIcon.addEventListener("click", toogleCart);
 
 // -------------------------LOGICA CARRITO--------------------------------//
 const productsCart = document.querySelector(".products-container");
-
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 const saveCart = () => localStorage.setItem("cart", JSON.stringify(cart));
@@ -138,11 +137,22 @@ const showCartTotal = () => {
   totalCart.textContent = `$${getCartTotal()}`;
 };
 
+const disableBtn = (btn) => {
+  if (!cart.length) {
+    btn.classList.add("disabled");
+  } else {
+    btn.classList.remove("disabled");
+  }
+};
+
 // Funcion que ejecute todo lo necesario para actualizar el carro
 const updateCartState = () => {
   saveCart();
   showCartTotal();
   renderCart();
+  disableBtn(buyCartBtn);
+  disableBtn(clearCartBtn);
+  updateCartBurbuja();
 };
 
 const successModal = document.querySelector(".add-modal");
@@ -201,7 +211,10 @@ const handleMinusBtnEvent = (id) => {
   const existingCartProduct = cart.find((item) => item.id === id);
 
   if (existingCartProduct.cantidad === 1) {
-    removeProductFromCart(existingCartProduct);
+    if (window.confirm("¿Desea eliminar el producto del carrito?")) {
+      removeProductFromCart(existingCartProduct);
+    }
+
     return;
   }
   substracUnitProduct(existingCartProduct);
@@ -230,5 +243,46 @@ const handleQuantity = (e) => {
   updateCartState();
 };
 
+const clearCartBtn = document.querySelector(".clear-cart");
+
+const resetCartItems = () => {
+  cart = [];
+  updateCartState();
+};
+
+const completeCartAction = (confirmMsg, successMsg) => {
+  if (!cart.length) return;
+  if (window.confirm(confirmMsg)) {
+    resetCartItems();
+    alert(successMsg);
+  }
+};
+
+const deleteCart = () => {
+  completeCartAction(
+    "¿Estas seguro que deseas eliminar el carrito?",
+    "No hay productos en el carrito"
+  );
+};
+
+const buyCartBtn = document.querySelector(".btn-buy");
+
+const buyCart = () => {
+  completeCartAction(
+    "¿Desea confirmar la compra?",
+    "Compra realizada con exito"
+  );
+};
+
+const cartBurbuja = document.querySelector(".cart-burbuja");
+const updateCartBurbuja = () => {
+  cartBurbuja.textContent = cart.reduce((acc, cur) => acc + cur.cantidad, 0);
+};
+
+updateCartBurbuja(cart);
+disableBtn(buyCartBtn);
+disableBtn(clearCartBtn);
+buyCartBtn.addEventListener("click", buyCart);
+clearCartBtn.addEventListener("click", deleteCart);
 productsCart.addEventListener("click", handleQuantity);
 document.addEventListener("DOMContentLoaded", showCartTotal);
