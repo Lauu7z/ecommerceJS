@@ -1,9 +1,21 @@
 const container = document.getElementById("container-products");
+const checkboxes = document.querySelectorAll(".filtro-marca");
+const btnHambur = document.getElementById("hambur");
+const openMenu = document.querySelector(".open-menu");
+const carritoIcon = document.getElementById("cart");
+const cartMenu = document.querySelector(".cart-menu");
+const productsCart = document.querySelector(".products-container");
+const totalCart = document.getElementById("total-cart");
+const successModal = document.querySelector(".add-modal");
+const clearCartBtn = document.querySelector(".clear-cart");
+const buyCartBtn = document.querySelector(".btn-buy");
+const cartBurbuja = document.querySelector(".cart-burbuja");
 
-// Funcion para renderizar productos
-const createProductCardTemplate = (producto) => {
-  const {id, img, nombre, marca, precio} = producto;
-  return `
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+const saveCart = () => localStorage.setItem("cart", JSON.stringify(cart));
+
+const createProductCardTemplate = ({id, img, nombre, marca, precio}) => `
   <div class="product-card">
     <img src="${img}" alt="${nombre}" class="product-img">
     <h3>${nombre}</h3>
@@ -16,20 +28,13 @@ const createProductCardTemplate = (producto) => {
       data-precio='${precio}'
       >Agregar al carrito</button>
   </div>
-  `;
-};
+`;
 
 const renderProductos = (productos) => {
-  container.innerHTML = "";
   container.innerHTML = productos.map(createProductCardTemplate).join("");
 };
 
-renderProductos(camisetas);
-
-// Funcion para filtrar productos
-const checkboxes = document.querySelectorAll(".filtro-marca");
 const filtrarProductos = () => {
-  // Obtener las marcas seleccionadas
   const marcasSeleccionadas = Array.from(checkboxes)
     .filter((checkbox) => checkbox.checked)
     .map((checkbox) => checkbox.value);
@@ -41,121 +46,71 @@ const filtrarProductos = () => {
         )
       : camisetas;
 
-  // Renderizar los productos filtrados
   renderProductos(productosFiltrados);
 };
 
-checkboxes.forEach((checkbox) =>
-  checkbox.addEventListener("change", filtrarProductos)
-);
-
-// -------------------------MENU HAMBURGUESA ---------------------//
-const btnHambur = document.getElementById("hambur");
-const openMenu = document.querySelector(".open-menu");
-// MOSTRAR MENU HAMBUR
-const toogleMenu = () => {
+const toggleMenu = () => {
   openMenu.classList.toggle("visibleMenu");
-
   if (cartMenu.classList.contains("visibleCart")) {
     cartMenu.classList.remove("visibleCart");
-    return;
   }
-
-  if (openMenu.classList.contains("visibleMenu")) {
-    document.body.style.overflow = "hidden";
-  } else {
-    document.body.style.overflow = "";
-  }
+  document.body.style.overflow = openMenu.classList.contains("visibleMenu")
+    ? "hidden"
+    : "";
 };
-btnHambur.addEventListener("click", toogleMenu);
 
-// ------------------------- CARRITO --------------------------------//
-const carritoIcon = document.getElementById("cart");
-const cartMenu = document.querySelector(".cart-menu");
-
-// Mostrar el carrito
-const toogleCart = () => {
+const toggleCart = () => {
   cartMenu.classList.toggle("visibleCart");
   if (openMenu.classList.contains("visibleMenu")) {
     openMenu.classList.remove("visibleMenu");
-    return;
   }
-  if (cartMenu.classList.contains("visibleCart")) {
-    document.body.style.overflow = "hidden";
-  } else {
-    document.body.style.overflow = "";
-  }
+  document.body.style.overflow = cartMenu.classList.contains("visibleCart")
+    ? "hidden"
+    : "";
 };
-carritoIcon.addEventListener("click", toogleCart);
 
-// -------------------------LOGICA CARRITO--------------------------------//
-const productsCart = document.querySelector(".products-container");
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-const saveCart = () => localStorage.setItem("cart", JSON.stringify(cart));
-
-// Logica crear template
-const createCartProductHTML = (cartProduct) => {
-  const {id, img, nombre, precio, cantidad} = cartProduct;
-  return `
+const createCartProductHTML = ({id, img, nombre, precio, cantidad}) => `
   <div class='cart-item'>
-  <img src="${img}" alt="${nombre}" class="product-img">
-  <div>
-    <p>${nombre}</p>
-    <p>$${precio}</p>
-    </div>
-    <span class="cantidad restar" data-id="${id}">-</span>
-    <p>${cantidad}</p>
-    <span class="cantidad sumar" data-id="${id}">+</span>
-    </div>
+    <img src="${img}" alt="${nombre}" class="product-img">
     <div>
-    
+      <p>${nombre}</p>
+      <p>$${precio}</p>
+    </div>
+    <div class="quantity">
+      <span class="cantidad restar" data-id="${id}">-</span>
+      <p>${cantidad}</p>
+      <span class="cantidad sumar" data-id="${id}">+</span>
     </div>
 
-    <div/>
-    `;
-};
-// Logica renderizar
-renderCart = () => {
-  if (!cart.length) {
-    productsCart.innerHTML = `<p>No existe nada</p>`;
-    return;
-  }
-  productsCart.innerHTML = cart.map(createCartProductHTML).join("");
-};
-document.addEventListener("DOMContentLoaded", renderCart);
+  </div>
+`;
 
-// Traemos del dom el total
-const totalCart = document.getElementById("total-cart");
-
-const getCartTotal = () => {
-  const total = cart.reduce((acc, cur) => acc + cur.precio * cur.cantidad, 0);
-  return total;
+const renderCart = () => {
+  productsCart.innerHTML = cart.length
+    ? cart.map(createCartProductHTML).join("")
+    : `<p>No tienes productos en el carrito.</p>
+       <p>Agrega productos 🙌</p>`;
 };
+
+const getCartTotal = () =>
+  cart.reduce((acc, cur) => acc + cur.precio * cur.cantidad, 0);
 
 const showCartTotal = () => {
   totalCart.textContent = `$${getCartTotal()}`;
 };
 
-const disableBtn = (btn) => {
-  if (!cart.length) {
-    btn.classList.add("disabled");
-  } else {
-    btn.classList.remove("disabled");
-  }
+const updateCartBurbuja = () => {
+  cartBurbuja.textContent = cart.reduce((acc, cur) => acc + cur.cantidad, 0);
 };
 
-// Funcion que ejecute todo lo necesario para actualizar el carro
 const updateCartState = () => {
   saveCart();
   showCartTotal();
   renderCart();
+  updateCartBurbuja();
   disableBtn(buyCartBtn);
   disableBtn(clearCartBtn);
-  updateCartBurbuja();
 };
-
-const successModal = document.querySelector(".add-modal");
 
 const showSuccessModal = (msg) => {
   successModal.classList.add("active-modal");
@@ -165,10 +120,27 @@ const showSuccessModal = (msg) => {
   }, 2000);
 };
 
+const createProductData = ({id, nombre, precio, img}) => ({
+  id,
+  nombre,
+  precio,
+  img,
+});
+
+const isExistingCartProduct = (producto) =>
+  cart.some((item) => item.id === producto.id);
+
+const addUnitProduct = (product) => {
+  cart = cart.map((cartProduct) =>
+    cartProduct.id === product.id
+      ? {...cartProduct, cantidad: cartProduct.cantidad + 1}
+      : cartProduct
+  );
+};
+
 const addProduct = ({target}) => {
   if (!target.classList.contains("add-product")) return;
   const product = createProductData(target.dataset);
-  // Validacion si existe el producto en el carrito
   if (isExistingCartProduct(product)) {
     addUnitProduct(product);
     showSuccessModal("Se agrego otra unidad al carrito");
@@ -179,58 +151,33 @@ const addProduct = ({target}) => {
   updateCartState();
 };
 
-// Funcion para agregar una unidad
-const addUnitProduct = (product) => {
-  console.log("Existe en el carro,le agrego una unidad");
-  cart = cart.map((cartProduct) =>
-    cartProduct.id === product.id
-      ? {...cartProduct, cantidad: cartProduct.cantidad + 1}
-      : cartProduct
-  );
-};
-
-// Funcion para crear el objeto con la info del producto
-const createProductData = (producto) => {
-  const {id, nombre, precio, img} = producto;
-  return {id, nombre, precio, img};
-};
-
-const isExistingCartProduct = (producto) => {
-  return cart.find((item) => item.id === producto.id);
-};
-
-container.addEventListener("click", addProduct);
-
-// Handle Quantity Sumar
-const handlePlusEvent = (id) => {
-  const existingCartProduct = cart.find((product) => product.id === id);
-  addUnitProduct(existingCartProduct);
-};
-// Handle Cantidad Restar
-const handleMinusBtnEvent = (id) => {
-  const existingCartProduct = cart.find((item) => item.id === id);
-
-  if (existingCartProduct.cantidad === 1) {
-    if (window.confirm("¿Desea eliminar el producto del carrito?")) {
-      removeProductFromCart(existingCartProduct);
-    }
-
-    return;
-  }
-  substracUnitProduct(existingCartProduct);
-};
-
 const substracUnitProduct = (existingProduct) => {
-  cart = cart.map((product) => {
-    return product.id === existingProduct.id
+  cart = cart.map((product) =>
+    product.id === existingProduct.id
       ? {...product, cantidad: product.cantidad - 1}
-      : product;
-  });
+      : product
+  );
 };
 
 const removeProductFromCart = (existingProduct) => {
   cart = cart.filter((product) => product.id !== existingProduct.id);
   updateCartState();
+};
+
+const handlePlusEvent = (id) => {
+  const existingCartProduct = cart.find((product) => product.id === id);
+  addUnitProduct(existingCartProduct);
+};
+
+const handleMinusBtnEvent = (id) => {
+  const existingCartProduct = cart.find((item) => item.id === id);
+  if (existingCartProduct.cantidad === 1) {
+    if (window.confirm("¿Desea eliminar el producto del carrito?")) {
+      removeProductFromCart(existingCartProduct);
+    }
+  } else {
+    substracUnitProduct(existingCartProduct);
+  }
 };
 
 const handleQuantity = (e) => {
@@ -239,33 +186,21 @@ const handleQuantity = (e) => {
   } else if (e.target.classList.contains("sumar")) {
     handlePlusEvent(e.target.dataset.id);
   }
-
   updateCartState();
 };
 
-const clearCartBtn = document.querySelector(".clear-cart");
-
-const resetCartItems = () => {
+const clearCart = () => {
   cart = [];
   updateCartState();
 };
 
 const completeCartAction = (confirmMsg, successMsg) => {
-  if (!cart.length) return;
   if (window.confirm(confirmMsg)) {
-    resetCartItems();
-    alert(successMsg);
+    cart = [];
+    updateCartState();
+    showSuccessModal(successMsg);
   }
 };
-
-const deleteCart = () => {
-  completeCartAction(
-    "¿Estas seguro que deseas eliminar el carrito?",
-    "No hay productos en el carrito"
-  );
-};
-
-const buyCartBtn = document.querySelector(".btn-buy");
 
 const buyCart = () => {
   completeCartAction(
@@ -274,15 +209,28 @@ const buyCart = () => {
   );
 };
 
-const cartBurbuja = document.querySelector(".cart-burbuja");
-const updateCartBurbuja = () => {
-  cartBurbuja.textContent = cart.reduce((acc, cur) => acc + cur.cantidad, 0);
+const disableBtn = (btn) => {
+  if (!cart.length) {
+    btn.classList.add("disabled");
+  } else {
+    btn.classList.remove("disabled");
+  }
 };
 
-updateCartBurbuja(cart);
-disableBtn(buyCartBtn);
-disableBtn(clearCartBtn);
-buyCartBtn.addEventListener("click", buyCart);
-clearCartBtn.addEventListener("click", deleteCart);
+checkboxes.forEach((checkbox) =>
+  checkbox.addEventListener("change", filtrarProductos)
+);
+btnHambur.addEventListener("click", toggleMenu);
+carritoIcon.addEventListener("click", toggleCart);
+container.addEventListener("click", addProduct);
 productsCart.addEventListener("click", handleQuantity);
-document.addEventListener("DOMContentLoaded", showCartTotal);
+clearCartBtn.addEventListener("click", clearCart);
+buyCartBtn.addEventListener("click", buyCart);
+document.addEventListener("DOMContentLoaded", () => {
+  renderProductos(camisetas);
+  renderCart();
+  showCartTotal();
+  updateCartBurbuja();
+  disableBtn(buyCartBtn);
+  disableBtn(clearCartBtn);
+});
