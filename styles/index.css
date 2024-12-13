@@ -348,7 +348,7 @@ nav {
 /* HERO SECTION */
 .hero {
   background-color: #1d3382; /* Azul celeste */
-  height: 70vh;
+  height: 50vh;
   display: flex;
   align-items: center;
   justify-content: center;
