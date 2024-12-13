@@ -27,30 +27,47 @@
     </header>
 
     <main>
-      
-          <div class="login-container">
-            <h3>Iniciar Sesion</h3>
-
+      <div class="createAccountContainer">
+        <section class="createAccount">
+          <div class="register-container">
+            <h3>Registro</h3>
             <form class="form-container">
+              <input type="text" placeholder="Usuario" id="usuario" />
+              <div class="input-container">
+                <input
+                  type="text"
+                  name=""
+                  id="nombre"
+                  placeholder="Nombre"
+                  required
+                />
+                <input
+                  type="text"
+                  name=""
+                  id="apellido"
+                  placeholder="Apellido"
+                  required
+                />
+              </div>
               <input
                 type="email"
                 name=""
-                id="email-login"
+                id="email"
                 placeholder="Email"
                 required
               />
               <input
                 type="password"
                 name=""
-                id="password-login"
+                id="password"
                 placeholder="Contraseña"
                 required
               />
-              <button type="submit">Iniciar Sesion</button>
+
+              <button type="submit">Registrarse</button>
             </form>
           </div>
-        </section>
-      </div>
+          
     </main>
   </body>
 </html>

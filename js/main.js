@@ -71,11 +71,14 @@ const toggleCart = () => {
 
 const createCartProductHTML = ({id, img, nombre, precio, cantidad}) => `
   <div class='cart-item'>
+  <div class='div-items'>	
     <img src="${img}" alt="${nombre}" class="product-img">
     <div>
       <p>${nombre}</p>
       <p>$${precio}</p>
     </div>
+  </div>
+
     <div class="quantity">
       <span class="cantidad restar" data-id="${id}">-</span>
       <p>${cantidad}</p>
@@ -216,6 +219,36 @@ const disableBtn = (btn) => {
     btn.classList.remove("disabled");
   }
 };
+
+// Contacto Validacion
+
+const contactForm = document.getElementById("contact-form");
+
+const validateEmail = (email) => {
+  const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+  return regex.test(email);
+};
+
+contactForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const nombre = document.getElementById("nombre-contact").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const motivo = document.getElementById("motivo").value.trim();
+
+  if (!nombre || !email || !motivo) {
+    alert("Todos los campos son obligatorios");
+    return;
+  }
+
+  if (!validateEmail(email)) {
+    alert("Email invalido");
+    return;
+  }
+
+  alert("Mensaje enviado con exito");
+  contactForm.submit();
+});
 
 checkboxes.forEach((checkbox) =>
   checkbox.addEventListener("change", filtrarProductos)

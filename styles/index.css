@@ -6,10 +6,13 @@
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   display: flex;
   flex-direction: column;
-  background-color: rgb(255, 249, 241);
 }
 
 /* Header */
@@ -170,6 +173,12 @@ nav {
   padding: 5px 10px;
 }
 
+.div-items {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
 .cantidad {
   cursor: pointer;
   padding: 5px 10px;
@@ -256,22 +265,30 @@ nav {
 
 .clear-cart {
   background-color: rgb(227, 227, 227);
-  color: white;
+  color: black;
   border: none;
   cursor: pointer;
   border-radius: 5px;
-  color: black;
   padding: 5px 10px;
+  transition: background-color 0.3s;
+}
+
+.clear-cart:hover {
+  background-color: rgb(200, 200, 200);
 }
 
 .btn-buy {
   background-color: #ffee6c;
-  color: white;
+  color: black;
   border: none;
   cursor: pointer;
   border-radius: 5px;
-  color: black;
-  padding: 5px 10px;
+  padding: 10px 10px;
+  transition: background-color 0.3s;
+}
+
+.btn-buy:hover {
+  background-color: #e6d65c;
 }
 
 .disabled {
@@ -338,6 +355,7 @@ nav {
   color: white;
   text-align: center;
   padding: 20px;
+  margin-top: 127px;
 }
 .hero h2 {
   font-size: 48px;
@@ -366,10 +384,13 @@ nav {
   margin: 0 auto;
 }
 
-/* FILTER */
+/* SECTION PRODUCTS */
 
 .sectionProducts {
   display: flex;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f8f8f8;
 }
 
 .filter {
@@ -377,9 +398,8 @@ nav {
   display: flex;
   flex-direction: column;
   padding: 20px;
-  background-color: #f8f8f8;
+  background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-right: 20px;
 }
 
 .filter h3 {
@@ -412,32 +432,58 @@ nav {
 #container-products {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px 20px;
-  padding: 10px;
+  gap: 20px;
   justify-content: center;
+  flex: 1;
 }
 
 .product-card {
   border: 1px solid #ddd;
   border-radius: 8px;
-  padding: 10px;
-  width: 450px;
+  padding: 20px;
+  width: 300px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
+  transition: transform 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
 }
 
 .product-card img {
   width: 100%;
   border-radius: 4px;
   aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.product-card h3 {
+  font-size: 20px;
+  margin: 10px 0;
+  color: #333;
+}
+
+.product-card p {
+  font-size: 16px;
+  color: #666;
+  margin: 5px 0;
 }
 
 .product-card button {
-  padding: 5px 30px;
-  background-color: bisque;
+  padding: 10px 20px;
+  background-color: #007bff;
   border: none;
+  color: white;
+  border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
+.product-card button:hover {
+  background-color: #0056b3;
+}
 /* FOOTER */
 footer {
   background-color: #f8f8f8;
@@ -526,6 +572,45 @@ footer {
   transform: scale(1.1);
 }
 
+/* Contact */
+
+.contact-us {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.form-contact {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.form-contact label {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.form-contact input,
+.form-contact textarea {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.form-contact button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
 /* MEDIAQUERIES */
 @media (max-width: 768px) {
   .ulList {
@@ -547,17 +632,38 @@ footer {
   }
 
   .open-menu {
-    display: none;
-    position: fixed;
-    top: 54px;
-    right: 0;
-    width: 60vi;
+    top: 74px;
+    width: 100%;
+  }
+
+  .container-menu-hambur {
+    align-items: center;
     height: 100%;
-    background-color: white;
-    z-index: 1000;
+    font-size: 35px;
   }
 
   .visibleMenu {
     display: block;
+  }
+
+  /* CART */
+
+  .cart-menu {
+    width: 100%;
+  }
+
+  /* HERO */
+
+  .hero {
+    height: 45vh;
+  }
+  .hero h2 {
+    font-size: 25px;
+  }
+
+  /* SECTION PRODUCTS */
+  .sectionProducts {
+    flex-direction: column;
+    align-items: center;
   }
 }
